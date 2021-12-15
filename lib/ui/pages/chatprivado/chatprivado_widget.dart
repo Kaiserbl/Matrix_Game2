@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:matrix_game/domain/controller/image_controller.dart';
+import 'package:Matrix_Game2/domain/controller/image_controller.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';

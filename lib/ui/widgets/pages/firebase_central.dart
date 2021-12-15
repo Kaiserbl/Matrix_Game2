@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:matrix_game/ui/pages/inicio/inicio_widget.dart';
-import 'package:matrix_game/ui/pages/login/login_widget.dart';
+import 'package:Matrix_Game2/ui/pages/inicio/inicio_widget.dart';
+import 'package:Matrix_Game2/ui/pages/login/login_widget.dart';
 
 class FirebaseCentral extends StatelessWidget {
   @override

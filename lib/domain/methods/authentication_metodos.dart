@@ -1,5 +1,5 @@
 import 'dart:developer';
-import 'package:matrix_game/data/models/user_model.dart';
+import 'package:Matrix_Game2/data/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 

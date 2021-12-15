@@ -1,4 +1,4 @@
-import 'package:matrix_game/data/services/geolocation.dart';
+import 'package:Matrix_Game2/data/services/geolocation.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LocationManager {

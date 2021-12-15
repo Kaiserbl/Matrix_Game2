@@ -2,18 +2,18 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:matrix_game/domain/controller/auth_controller.dart';
-import 'package:matrix_game/domain/controller/image_controller.dart';
-import 'package:matrix_game/domain/controller/state_controller.dart';
-import 'package:matrix_game/domain/controller/state_controller2.dart';
-import 'package:matrix_game/domain/methods/authentication_metodos.dart';
-import 'package:matrix_game/domain/methods/firestore_metodos.dart';
-import 'package:matrix_game/domain/methods/verificacion_metodos.dart';
-import 'package:matrix_game/domain/use_case/controllers/location.dart';
-import 'package:matrix_game/domain/use_case/controllers/permissions.dart';
-import 'package:matrix_game/domain/use_case/permission_management.dart';
-import 'package:matrix_game/ui/pages/inicio/inicio_widget.dart';
-import 'package:matrix_game/ui/pages/login/login_widget.dart';
+import 'package:Matrix_Game2/domain/controller/auth_controller.dart';
+import 'package:Matrix_Game2/domain/controller/image_controller.dart';
+import 'package:Matrix_Game2/domain/controller/state_controller.dart';
+import 'package:Matrix_Game2/domain/controller/state_controller2.dart';
+import 'package:Matrix_Game2/domain/methods/authentication_metodos.dart';
+import 'package:Matrix_Game2/domain/methods/firestore_metodos.dart';
+import 'package:Matrix_Game2/domain/methods/verificacion_metodos.dart';
+import 'package:Matrix_Game2/domain/use_case/controllers/location.dart';
+import 'package:Matrix_Game2/domain/use_case/controllers/permissions.dart';
+import 'package:Matrix_Game2/domain/use_case/permission_management.dart';
+import 'package:Matrix_Game2/ui/pages/inicio/inicio_widget.dart';
+import 'package:Matrix_Game2/ui/pages/login/login_widget.dart';
 
 //probando rama juan
 void main() async {

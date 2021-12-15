@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:matrix_game/domain/use_case/controllers/location.dart';
-import 'package:matrix_game/domain/use_case/controllers/permissions.dart';
-import 'package:matrix_game/domain/use_case/location_management.dart';
+import 'package:Matrix_Game2/domain/use_case/controllers/location.dart';
+import 'package:Matrix_Game2/domain/use_case/controllers/permissions.dart';
+import 'package:Matrix_Game2/domain/use_case/location_management.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
