@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "318998996473",
+    "firebase_url": "https://matrix-games-127210-default-rtdb.firebaseio.com",
+    "project_id": "matrix-games-127210",
+    "storage_bucket": "matrix-games-127210.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318998996473:android:90213960f92ecffb558928",
+        "android_client_info": {
+          "package_name": "com.flutterflow.proyectomintic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318998996473-a04p50t7gh60oblib0v0kd0sro2u5ejo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhofNKN2ml0Rup0nbPsRXNVPDHhrkIk9U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318998996473-a04p50t7gh60oblib0v0kd0sro2u5ejo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
