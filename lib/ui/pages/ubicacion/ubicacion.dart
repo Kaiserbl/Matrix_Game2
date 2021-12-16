@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:Matrix_Game2/domain/controller/image_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:Matrix_Game2/domain/use_case/controllers/location.dart';
 import 'package:Matrix_Game2/domain/use_case/controllers/permissions.dart';
@@ -27,7 +28,7 @@ class _State extends State<GpsScreen> {
     permissionsController = Get.find();
     locationController = Get.find();
     manager = LocationManager();
-    Timer.periodic(const Duration(seconds: 20), (timer) async {
+    Timer.periodic(const Duration(minutes: 15), (timer) async {
       locationController.location.value = null;
       if (permissionsController.locationGranted) {
         final position = await manager.getCurrentLocation();
@@ -40,8 +41,17 @@ class _State extends State<GpsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Image_Control image = Get.find();
     return Column(
       children: [
+        Obx(
+          () => Image.asset(
+            image.imagen,
+            width: double.infinity,
+            height: double.infinity,
+            //fit: BoxFit.cover,
+          ),
+        ),
         Expanded(
           child: Center(
             child: Padding(
