@@ -11,7 +11,7 @@
     </intent>
   </queries>
   <application
-        android:label="proyecto_mintic"
+        android:label="Matrix Game"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">

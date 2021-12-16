@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:Matrix_Game2/domain/controller/auth_controller.dart';
 import 'package:Matrix_Game2/domain/controller/image_controller.dart';
