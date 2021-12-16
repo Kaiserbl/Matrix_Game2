@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -45,7 +46,16 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: GetX<AuthenticationController>(
+        home: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return InicioWidget();
+            } else {
+              return LoginWidget();
+            }
+          },
+          /*GetX<AuthenticationController>(
           builder: (controller) {
             if (controller.isLogged.value) {
               return InicioWidget();
@@ -53,6 +63,7 @@ class MyApp extends StatelessWidget {
               return const LoginWidget();
             }
           },
+        )*/
         ));
   }
 }

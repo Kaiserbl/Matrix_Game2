@@ -1,3 +1,4 @@
+import 'package:Matrix_Game2/domain/controller/auth_controller.dart';
 import 'package:get/get.dart';
 import 'package:Matrix_Game2/domain/controller/image_controller.dart';
 import 'package:Matrix_Game2/ui/pages/login/login_widget.dart';
@@ -109,8 +110,10 @@ class _ConfiguracionWidgetState extends State<ConfiguracionWidget> {
                               padding: const EdgeInsets.all(-8),
                               primary: Color(0xFFFABAFA),
                             ),
-                            onPressed: () {
-                              Get.to(() => LoginWidget());
+                            onPressed: () async {
+                              AuthenticationController
+                                  authenticationController = Get.find();
+                              await authenticationController.logout();
                             },
                             child: Padding(
                               padding:
