@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:Matrix_Game2/domain/use_case/controllers/location.dart';
 import 'package:Matrix_Game2/domain/use_case/controllers/permissions.dart';
@@ -25,6 +27,15 @@ class _State extends State<GpsScreen> {
     permissionsController = Get.find();
     locationController = Get.find();
     manager = LocationManager();
+    Timer.periodic(const Duration(seconds: 20), (timer) async {
+      locationController.location.value = null;
+      if (permissionsController.locationGranted) {
+        final position = await manager.getCurrentLocation();
+        locationController.location.value = position;
+        Get.snackbar('Tu ubicación',
+            'Latitud ${position.latitude}\nLongitud: ${position.longitude}\nAltitud: ${position.altitude}');
+      }
+    });
   }
 
   @override
