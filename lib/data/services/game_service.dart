@@ -12,10 +12,10 @@ class GameService {
     if (respuesta.statusCode == 200) {
       var res = json.decode(respuesta.body);
       final List<Juego> juegos = [];
-      for (var item in res['']) {
+      for (var item in res) {
         juegos.add(Juego.fromJson(item));
       }
-      print(juegos[0].title);
+      print('Hola');
       return juegos;
     } else {
       throw Exception('Error');
