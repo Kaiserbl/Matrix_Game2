@@ -41,7 +41,7 @@ class _ChatprivadoWidgetState extends State<ChatprivadoWidget> {
     logInfo('Current user? -> ${uid == element.user} msg -> ${element.text}');
     return Card(
       margin: EdgeInsets.all(4.0),
-      color: uid == element.user ? Colors.yellow[200] : Colors.grey[300],
+      color: uid == element.user ? Colors.purple[50] : Colors.grey[300],
       child: ListTile(
         onTap: () => chatController.updateMsg(element),
         onLongPress: () => chatController.deleteMsg(element, posicion),
