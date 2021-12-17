@@ -1,3 +1,4 @@
+import 'package:Matrix_Game2/ui/pages/serweb/response_screen.dart';
 import 'package:Matrix_Game2/ui/pages/serweb/serweb_widget.dart';
 import 'package:get/get.dart';
 import 'package:Matrix_Game2/domain/controller/image_controller.dart';
@@ -185,7 +186,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                           child: IconButton(
                             icon: Image.asset('assets/images/game_off.png'),
                             onPressed: () {
-                              Get.to(() => SerwebWidget());
+                              Get.to(() => ResponseScreen());
                             },
                           ),
                         ),
