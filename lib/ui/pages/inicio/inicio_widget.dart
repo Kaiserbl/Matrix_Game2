@@ -186,7 +186,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                           child: IconButton(
                             icon: Image.asset('assets/images/game_off.png'),
                             onPressed: () {
-                              Get.to(() => ResponseScreen());
+                              Get.to(() => SerwebWidget());
                             },
                           ),
                         ),

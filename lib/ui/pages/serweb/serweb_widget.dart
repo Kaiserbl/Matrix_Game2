@@ -96,41 +96,7 @@ class _SerwebWidgetState extends State<SerwebWidget> {
             ),
             //CONTENEDOR DE LAS CARTAS
             Align(
-              alignment: AlignmentDirectional(0, 0),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 60),
-                child: Container(
-                  width: 340,
-                  height: 560,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFEEEEEE),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                    child: Stack(
-                      children: [
-                        Container(child:
-                            GetX<StateController>(builder: (statecontroller) {
-                          return ListView.builder(
-                            itemCount: statecontroller.listStates.length,
-                            itemBuilder: (context, index) {
-                              return CardState(
-                                  titulo:
-                                      statecontroller.listState[index].titulo,
-                                  pathImagen: statecontroller
-                                      .listState[index].pathImagen,
-                                  estado:
-                                      statecontroller.listState[index].estado);
-                            },
-                          );
-                        }))
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
+                alignment: AlignmentDirectional(0, 0), child: ResponseScreen()),
             //BOTON NAVEGACION ABAJO
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 720, 0, 3),
