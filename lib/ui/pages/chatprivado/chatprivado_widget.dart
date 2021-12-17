@@ -144,42 +144,44 @@ class _ChatprivadoWidgetState extends State<ChatprivadoWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 10),
                 child: Container(
-                  width: 340,
-                  height: 650,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(47),
-                  ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 3,
-                        child: Container(
-                          child: TextField(
-                            key: const Key('MsgTextField'),
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Your message',
+                    width: 340,
+                    height: 650,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(47),
+                    ),
+                    child: Column(children: [
+                      Expanded(flex: 4, child: _list()),
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: Container(
+                              child: TextField(
+                                key: const Key('MsgTextField'),
+                                decoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Your message',
+                                ),
+                                onSubmitted: (value) {
+                                  _sendMsg(_controller.text);
+                                  _controller.clear();
+                                },
+                                controller: _controller,
+                              ),
                             ),
-                            onSubmitted: (value) {
+                          ),
+                          IconButton(
+                            icon: Image.asset('assets/images/BTN_enviar.png'),
+                            iconSize: 35,
+                            onPressed: () {
                               _sendMsg(_controller.text);
                               _controller.clear();
                             },
-                            controller: _controller,
-                          ),
-                        ),
+                          )
+                        ],
                       ),
-                      IconButton(
-                        icon: Image.asset('assets/images/BTN_enviar.png'),
-                        iconSize: 35,
-                        onPressed: () {
-                          _sendMsg(_controller.text);
-                          _controller.clear();
-                        },
-                      )
-                    ],
-                  ),
-                ),
+                    ])),
               ),
             )
           ],
