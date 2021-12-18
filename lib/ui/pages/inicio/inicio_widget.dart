@@ -1,3 +1,4 @@
+import 'package:Matrix_Game2/ui/pages/ubicacion2/ubicacion2.dart';
 import 'package:get/get.dart';
 import 'package:Matrix_Game2/domain/controller/image_controller.dart';
 import 'package:Matrix_Game2/domain/controller/state_controller.dart';
@@ -26,7 +27,7 @@ class _InicioWidgetState extends State<InicioWidget> {
       icon: Image.asset('assets/images/P_chat_inactiovo.png'),
       iconSize: 40,
       onPressed: () {
-        Get.to(() => PerfilWidget());
+        Get.to(() => Locations());
       },
     );
     String estadoEjemplo = 'estadoEjemplo';
