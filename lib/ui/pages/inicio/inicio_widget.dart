@@ -1,4 +1,5 @@
 import 'package:Matrix_Game2/ui/pages/serweb/response_screen.dart';
+import 'package:Matrix_Game2/ui/pages/ubicacion2/ubicacion2.dart';
 import 'package:Matrix_Game2/ui/pages/serweb/serweb_widget.dart';
 import 'package:get/get.dart';
 import 'package:Matrix_Game2/domain/controller/image_controller.dart';
