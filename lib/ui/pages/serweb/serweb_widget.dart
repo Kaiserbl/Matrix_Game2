@@ -23,8 +23,8 @@ class _SerwebWidgetState extends State<SerwebWidget> {
 
   @override
   Widget build(BuildContext context) {
-    child:
-    ResponseScreen();
+    /*child:
+    ResponseScreen();*/
     // String tituloEjemplo = 'HOLA';
     // Widget pathImagenEjemplo = IconButton(
     //   icon: Image.asset('assets/images/P_chat_inactiovo.png'),
