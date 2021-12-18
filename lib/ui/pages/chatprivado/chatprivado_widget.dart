@@ -1,5 +1,9 @@
+import 'package:Matrix_Game2/data/models/message.dart';
+import 'package:Matrix_Game2/domain/controller/auth_controller.dart';
+import 'package:Matrix_Game2/domain/controller/chat_controller.dart';
 import 'package:get/get.dart';
 import 'package:Matrix_Game2/domain/controller/image_controller.dart';
+import 'package:loggy/loggy.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
@@ -13,9 +17,71 @@ class ChatprivadoWidget extends StatefulWidget {
 
 class _ChatprivadoWidgetState extends State<ChatprivadoWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  late TextEditingController _controller;
+  late ScrollController _scrollController;
+  ChatController chatController = Get.find();
+  AuthenticationController authenticationController = Get.find();
 
   @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+    _scrollController = ScrollController();
+    chatController.start();
+  }
+
+  void dispose() {
+    _controller.dispose();
+    _scrollController.dispose();
+    chatController.stop();
+    super.dispose();
+  }
+
+  Widget _item(Message element, int posicion, String uid) {
+    logInfo('Current user? -> ${uid == element.user} msg -> ${element.text}');
+    return Card(
+      margin: EdgeInsets.all(4.0),
+      color: uid == element.user ? Colors.purple[50] : Colors.grey[300],
+      child: ListTile(
+        onTap: () => chatController.updateMsg(element),
+        onLongPress: () => chatController.deleteMsg(element, posicion),
+        title: Text(
+          element.text,
+          textAlign: uid == element.user ? TextAlign.right : TextAlign.left,
+        ),
+      ),
+    );
+  }
+
+  Widget _list() {
+    String uid = authenticationController.getUid();
+    print('Current user $uid');
+    return GetX<ChatController>(builder: (controller) {
+      WidgetsBinding.instance!.addPostFrameCallback((_) => _scrollToEnd());
+      return ListView.builder(
+        itemCount: chatController.messages.length,
+        controller: _scrollController,
+        itemBuilder: (context, index) {
+          var element = chatController.messages[index];
+          return _item(element, index, uid);
+        },
+      );
+    });
+  }
+
+  Future<void> _sendMsg(String text) async {
+    //FocusScope.of(context).requestFocus(FocusNode());
+    logInfo("Calling _sendMsg with $text");
+    await chatController.sendMsg(text);
+  }
+
+  _scrollToEnd() async {
+    _scrollController.animateTo(_scrollController.position.maxScrollExtent,
+        duration: Duration(milliseconds: 200), curve: Curves.easeInOut);
+  }
+
   Widget build(BuildContext context) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) => _scrollToEnd());
     Image_Control image = Get.find();
 
     return Scaffold(
@@ -78,121 +144,44 @@ class _ChatprivadoWidgetState extends State<ChatprivadoWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 10),
                 child: Container(
-                  width: 340,
-                  height: 650,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(47),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(-0.63, 0.98),
-                          child: Container(
-                            width: 200,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFE9E9E9),
-                              borderRadius: BorderRadius.circular(36),
-                            ),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(15, 8, 15, 5),
-                              child: Text(
-                                'Mensaje...',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.bodyText1,
+                    width: 340,
+                    height: 650,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(47),
+                    ),
+                    child: Column(children: [
+                      Expanded(flex: 4, child: _list()),
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: Container(
+                              child: TextField(
+                                key: const Key('MsgTextField'),
+                                decoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Your message',
+                                ),
+                                onSubmitted: (value) {
+                                  _sendMsg(_controller.text);
+                                  _controller.clear();
+                                },
+                                controller: _controller,
                               ),
                             ),
                           ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(-0.69, -0.45),
-                          child: Image.asset(
-                            'assets/images/chat_1_amigo.png',
-                            width: 200,
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(-0.69, -0.9),
-                          child: Image.asset(
-                            'assets/images/chat_1_amigo.png',
-                            width: 200,
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0.69, -0.68),
-                          child: Image.asset(
-                            'assets/images/chat_2_respuesta.png',
-                            width: 200,
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0.55, 0.98),
-                          child: Image.asset(
-                            'assets/images/BTN_enviar.png',
-                            width: 40,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0.69, -0.03),
-                          child: Image.asset(
-                            'assets/images/chat_2_respuesta.png',
-                            width: 200,
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(-0.69, -0.25),
-                          child: Image.asset(
-                            'assets/images/chat_1_amigo.png',
-                            width: 200,
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0.69, 0.2),
-                          child: Image.asset(
-                            'assets/images/chat_2_respuesta.png',
-                            width: 200,
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0.86, 0.68),
-                          child: Image.asset(
-                            'assets/images/chat_espera.png',
-                            width: 100,
-                            height: 60,
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0.85, 0.98),
-                          child: Image.asset(
-                            'assets/images/archivo.png',
-                            width: 40,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0.69, 0.44),
-                          child: Image.asset(
-                            'assets/images/chat_2_respuesta.png',
-                            width: 200,
-                            fit: BoxFit.contain,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                          IconButton(
+                            icon: Image.asset('assets/images/BTN_enviar.png'),
+                            iconSize: 35,
+                            onPressed: () {
+                              _sendMsg(_controller.text);
+                              _controller.clear();
+                            },
+                          )
+                        ],
+                      ),
+                    ])),
               ),
             )
           ],

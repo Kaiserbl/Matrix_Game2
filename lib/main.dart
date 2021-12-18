@@ -1,4 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:Matrix_Game2/domain/controller/chat_controller.dart';
+import 'package:Matrix_Game2/domain/controller/firestore.dart';
+import 'package:Matrix_Game2/domain/use_case/controllers/location2.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,6 +33,10 @@ void main() async {
       Get.put(PermissionsController());
   permissionsController.permissionManager = PermissionManager();
   Get.put(LocationController());
+  Get.put(ChatController());
+  Get.put(ControllerFirestore());
+  Get.put(Controllerlocations());
+
   runApp(MyApp());
 }
 

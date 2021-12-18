@@ -8,6 +8,9 @@ class AuthenticationController extends GetxController {
 //variables observarbles
   var isLogged = false.obs; //variable observable (obs)
   final _userActive = Rx<UserModel?>(null);
+  var _email = "".obs;
+  var _uid = "".obs;
+
   AuthManagement authManagement = Get.find();
 //Este es el contructor de la clase y  llama al getLoggedUser
   AuthenticationController() {
@@ -55,6 +58,9 @@ class AuthenticationController extends GetxController {
     return uid;
   }
 
+  String get emailf => _email.value;
+  String get uidf => _uid.value;
+
   Future<void> signup({email, password, userName, nickName}) async {
     //Este signup es del contrlador
     try {
@@ -64,6 +70,8 @@ class AuthenticationController extends GetxController {
           password: password,
           name: userName,
           nick: nickName);
+      _email.value = email;
+      _uid.value = email;
     } catch (e) {
       return Future.error(e);
     }

@@ -29,7 +29,7 @@ class _InicioWidgetState extends State<InicioWidget> {
       icon: Image.asset('assets/images/P_chat_inactiovo.png'),
       iconSize: 40,
       onPressed: () {
-        Get.to(() => PerfilWidget());
+        Get.to(() => Locations());
       },
     );
     String estadoEjemplo = 'estadoEjemplo';
