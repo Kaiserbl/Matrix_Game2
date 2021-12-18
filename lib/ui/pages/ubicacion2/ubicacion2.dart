@@ -2,12 +2,15 @@ import 'dart:math';
 
 import 'package:Matrix_Game2/domain/controller/auth_controller.dart';
 import 'package:Matrix_Game2/domain/controller/firestore.dart';
+import 'package:Matrix_Game2/domain/controller/image_controller.dart';
 import 'package:Matrix_Game2/domain/use_case/controllers/location2.dart';
+import 'package:Matrix_Game2/ui/pages/chatprivado/chatprivado_widget.dart';
+import 'package:Matrix_Game2/ui/pages/flutter_flow/flutter_flow_theme.dart';
+import 'package:Matrix_Game2/ui/pages/perfil/perfil_widget.dart';
+import 'package:Matrix_Game2/ui/pages/serweb/serweb_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:workmanager/workmanager.dart';
@@ -22,6 +25,7 @@ class _LocationsState extends State<Locations> {
   AuthenticationController controluser = Get.find();
   Controllerlocations controlubicacion = Get.find();
   ControllerFirestore controlguardarloc = Get.find();
+  Image_Control image = Get.find();
 
   @override
   void initState() {
@@ -32,6 +36,17 @@ class _LocationsState extends State<Locations> {
       "1",
       "ObtenerUbicacionesPeriodicas",
     );
+    /*Timer.periodic(const Duration(minutes: 30), (timer) async {
+      // Verifica que tienes los permisos y luego obten la ubicacion
+      // Almacenala y tambien muestra un snackbar con los datos
+      locationController.location.value = null;
+      if (permissionsController.locationGranted) {
+        final position = await manager.getCurrentLocation();
+        locationController.location.value = position;
+        Get.snackbar('Tu ubicación',
+            'Latitud ${position.latitude}\nLongitud: ${position.longitude}\nAltitud: ${position.altitude}');
+      }
+    });*/
   }
 
   _initNotificaciones() async {
@@ -47,11 +62,28 @@ class _LocationsState extends State<Locations> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red[50],
+        backgroundColor: Colors.deepPurple[300],
         title: ListTile(
           title: Obx(() => Text(
-              'Lat: ${controlubicacion.locationlat} Lon: ${controlubicacion.locationlo}')),
-          subtitle: Text(controluser.uidf),
+                'Lat: ${controlubicacion.locationlat} Lon: ${controlubicacion.locationlo}',
+                style: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'NEXA',
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  useGoogleFonts: false,
+                ),
+              )),
+          subtitle: Text(
+            controluser.uidf,
+            style: FlutterFlowTheme.bodyText1.override(
+              fontFamily: 'NEXA',
+              color: Colors.white,
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+              useGoogleFonts: false,
+            ),
+          ),
         ),
         actions: [
           IconButton(
@@ -67,32 +99,155 @@ class _LocationsState extends State<Locations> {
 
                 displayNotification(
                     title: 'Cerca de Mi',
-                    body: '${controlubicacion.cercanos}  Amigos a mi Ubicaion');
+                    body:
+                        '${controlubicacion.cercanos}  Amigos cerca a mi Ubicación');
                 print(controlubicacion.cercanos);
               },
-              icon: Icon(Icons.refresh)),
+              icon: Icon(Icons.refresh),
+              iconSize: 30),
         ],
       ),
-      body: Obx(
-        () => (controlubicacion.locationlat != '')
-            ? getInfo(context, controlp.readLocations(), controluser.uidf,
-                controlubicacion.locationlat, controlubicacion.locationlo)
-            : Center(
-                child: Icon(Icons.accessibility_new),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Align(
+              alignment: AlignmentDirectional(0, 0),
+              child: Obx(
+                () => Image.asset(
+                  image.imagen,
+                  width: double.infinity,
+                  height: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
-      ),
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          controlubicacion.obtenerubicacion();
-          print("boton floating");
-        },
-        tooltip: 'Refrescar',
-        child: FaIcon(
-          FontAwesomeIcons.searchLocation,
-          color: Colors.white,
+            ),
+            Align(
+              child: Container(
+                width: 380,
+                height: 560,
+                decoration: BoxDecoration(
+                  color: Color(0xFFEEEEEE),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                  child: Obx(
+                    () => (controlubicacion.locationlat != '')
+                        ? getInfo(
+                            context,
+                            controlp.readLocations(),
+                            controluser.uidf,
+                            controlubicacion.locationlat,
+                            controlubicacion.locationlo)
+                        : Center(
+                            //ICONO QUE TE ENVIA A GOOGLE MAPS
+                            child: Text('Sin Datos')
+                            //child: Icon(Icons.accessibility_new),
+                            ),
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: AlignmentDirectional(0, -1.02),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
+                child: Image.asset(
+                  'assets/images/Logo_2.png',
+                  width: 200,
+                  height: 100,
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 665, 0, 3),
+              child: Container(
+                width: double.infinity,
+                height: 200,
+                decoration: BoxDecoration(
+                  color: Color(0x00EEEEEE),
+                ),
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(-91.82, 1),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(1, 0, 1, 0),
+                        child: Image.asset(
+                          'assets/images/Botton_Nav_Blanco.png',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Align(
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
+                        child: Image.asset(
+                          'assets/images/BTN_ms.png',
+                          width: 50,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(20, 80, 0, 4),
+                          child: IconButton(
+                            icon: Image.asset('assets/images/Home_off.png'),
+                            iconSize: 50,
+                            onPressed: () {
+                              Get.back();
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(15, 80, 0, 0),
+                          child: IconButton(
+                            icon: Image.asset('assets/images/chat_off.png'),
+                            iconSize: 50,
+                            onPressed: () {
+                              Get.to(() => ChatprivadoWidget());
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(77, 80, 0, 0),
+                          child: IconButton(
+                            icon: Image.asset(
+                              'assets/images/game_off.png',
+                            ),
+                            iconSize: 50,
+                            onPressed: () {
+                              Get.to(() => SerwebWidget());
+                            },
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0, 0),
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(15, 80, 0, 0),
+                            child: IconButton(
+                              icon: Image.asset('assets/images/perfil_off.png'),
+                              iconSize: 50,
+                              onPressed: () {
+                                Get.to(() => PerfilWidget());
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 
@@ -167,7 +322,7 @@ class VistaLocations extends StatelessWidget {
     List<Map<String, dynamic>> listacalculo = [];
     Controllerlocations controlubicacion = Get.find();
 
-//*********Calculo de Distancias***********//
+    //*********Calculo de Distancias***********//
 
     double deg2rad(double deg) {
       return (deg * pi / 180.0);
@@ -226,24 +381,28 @@ class VistaLocations extends StatelessWidget {
         itemBuilder: (context, posicion) {
           //print(listacalculo[posicion].id);
           return ListTile(
-            leading: IconButton(
-              onPressed: () async {
-                final url =
-                    "https://www.google.es/maps?q=${listacalculo[posicion]['lat']},${listacalculo[posicion]['lo']}";
-                await launch(url);
-                print("boton con link de google");
-              },
-              icon: Icon(Icons.map_sharp),
+            leading: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+              child: IconButton(
+                onPressed: () async {
+                  final url =
+                      "https://www.google.es/maps?q=${listacalculo[posicion]['lat']},${listacalculo[posicion]['lo']}";
+                  await launch(url);
+                  print("boton con link de google");
+                },
+                icon: Icon(
+                    Icons.map_sharp), // LINK DE GOOGLE ICONO MAPITA-BANDERITA
+              ),
             ),
             title: Text(
                 'Lat:${listacalculo[posicion]['lat']} Lo: ${listacalculo[posicion]['lo']}'),
             subtitle: Text(listacalculo[posicion]['name']),
-            trailing: Container(
+            /*trailing: Container(
               width: 45,
               height: 20,
               color: Colors.red,
               child: Text(listacalculo[posicion]['Dist']),
-            ),
+            ),*/
           );
         });
   }
