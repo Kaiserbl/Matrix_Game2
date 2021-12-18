@@ -142,13 +142,13 @@ class _ChatprivadoWidgetState extends State<ChatprivadoWidget> {
             Align(
               alignment: AlignmentDirectional(0, 0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 10),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 70, 0, 10),
                 child: Container(
-                    width: 340,
-                    height: 650,
+                    width: 360,
+                    height: 700,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(47),
+                      borderRadius: BorderRadius.circular(20),
                     ),
                     child: Column(children: [
                       Expanded(flex: 4, child: _list()),

@@ -1,8 +1,7 @@
 import 'package:Matrix_Game2/domain/controller/auth_controller.dart';
+import 'package:Matrix_Game2/ui/pages/ubicacion2/ubicacion2.dart';
 import 'package:get/get.dart';
 import 'package:Matrix_Game2/domain/controller/image_controller.dart';
-import 'package:Matrix_Game2/ui/pages/login/login_widget.dart';
-import 'package:Matrix_Game2/ui/pages/ubicacion/ubicacion.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -165,7 +164,7 @@ class _ConfiguracionWidgetState extends State<ConfiguracionWidget> {
                               primary: Color(0xFFFABAFA),
                             ),
                             onPressed: () {
-                              Get.to(() => GpsScreen());
+                              Get.to(() => Locations());
                             },
                             child: Padding(
                               padding:

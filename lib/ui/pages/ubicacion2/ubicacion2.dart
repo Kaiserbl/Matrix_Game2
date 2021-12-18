@@ -26,11 +26,10 @@ class _LocationsState extends State<Locations> {
     super.initState();
     controlubicacion.obtenerubicacion();
     _initNotificaciones();
-    /*
     Workmanager().registerPeriodicTask(
       "1",
       "ObtenerUbicacionesPeriodicas",
-    );*/
+    );
   }
 
   _initNotificaciones() async {

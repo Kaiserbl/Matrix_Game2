@@ -69,6 +69,14 @@ class _SerwebWidgetState extends State<SerwebWidget> {
                 ),
               ),
             ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+              child: Image.asset(
+                'assets/images/game_on.png',
+                width: 20,
+                fit: BoxFit.cover,
+              ),
+            ),
             Align(
               alignment: AlignmentDirectional(-0.8, -1.015),
               child: Padding(
@@ -96,7 +104,11 @@ class _SerwebWidgetState extends State<SerwebWidget> {
             ),
             //CONTENEDOR DE LAS CARTAS
             Align(
-                alignment: AlignmentDirectional(0, 0), child: ResponseScreen()),
+                alignment: AlignmentDirectional(0, 0),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 120, 0, 100),
+                  child: ResponseScreen(),
+                )),
             //BOTON NAVEGACION ABAJO
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 720, 0, 3),
@@ -150,27 +162,26 @@ class _SerwebWidgetState extends State<SerwebWidget> {
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(105, 80, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                           child: Image.asset(
-                            'assets/images/game_off.png',
-                            width: 45,
+                            'assets/images/game_on.png',
+                            width: 20,
                             fit: BoxFit.cover,
                           ),
-                        ),
+                        ), /*
                         Align(
                           alignment: AlignmentDirectional(0, 0),
                           child: Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(30, 80, 0, 0),
                             child: IconButton(
-                              icon: Image.asset('assets/images/perfik_on.png'),
+                              icon: Image.asset('assets/images/perfil_off.png'),
                               onPressed: () {
                                 Get.to(() => PerfilWidget());
                               },
                             ),
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                   ],

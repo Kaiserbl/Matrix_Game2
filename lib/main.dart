@@ -12,9 +12,7 @@ import 'package:Matrix_Game2/domain/controller/state_controller2.dart';
 import 'package:Matrix_Game2/domain/methods/authentication_metodos.dart';
 import 'package:Matrix_Game2/domain/methods/firestore_metodos.dart';
 import 'package:Matrix_Game2/domain/methods/verificacion_metodos.dart';
-import 'package:Matrix_Game2/domain/use_case/controllers/location.dart';
-import 'package:Matrix_Game2/domain/use_case/controllers/permissions.dart';
-import 'package:Matrix_Game2/domain/use_case/permission_management.dart';
+
 import 'package:Matrix_Game2/ui/pages/inicio/inicio_widget.dart';
 import 'package:Matrix_Game2/ui/pages/login/login_widget.dart';
 
@@ -29,10 +27,6 @@ void main() async {
   Get.put(AuthManagement());
   Get.put(AuthenticationController());
   Get.put(PasswordAuth());
-  PermissionsController permissionsController =
-      Get.put(PermissionsController());
-  permissionsController.permissionManager = PermissionManager();
-  Get.put(LocationController());
   Get.put(ChatController());
   Get.put(ControllerFirestore());
   Get.put(Controllerlocations());
