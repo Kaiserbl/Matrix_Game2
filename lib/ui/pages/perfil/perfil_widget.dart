@@ -1,3 +1,4 @@
+import 'package:Matrix_Game2/ui/pages/serweb/serweb_widget.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:Matrix_Game2/domain/controller/image_controller.dart';
@@ -323,39 +324,45 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(40, 80, 0, 4),
+                          padding: EdgeInsetsDirectional.fromSTEB(20, 80, 0, 4),
                           child: IconButton(
                             icon: Image.asset('assets/images/Home_off.png'),
+                            iconSize: 50,
                             onPressed: () {
-                              Get.to(() => InicioWidget());
+                              Get.back();
                             },
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(25, 80, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(15, 80, 0, 0),
                           child: IconButton(
                             icon: Image.asset('assets/images/chat_off.png'),
+                            iconSize: 50,
                             onPressed: () {
                               Get.to(() => ChatprivadoWidget());
                             },
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(105, 80, 0, 0),
-                          child: Image.asset(
-                            'assets/images/game_off.png',
-                            width: 45,
-                            fit: BoxFit.cover,
+                          padding: EdgeInsetsDirectional.fromSTEB(77, 80, 0, 0),
+                          child: IconButton(
+                            icon: Image.asset(
+                              'assets/images/game_off.png',
+                            ),
+                            iconSize: 50,
+                            onPressed: () {
+                              Get.to(() => SerwebWidget());
+                            },
                           ),
                         ),
                         Align(
                           alignment: AlignmentDirectional(0, 0),
                           child: Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(30, 80, 0, 0),
+                                EdgeInsetsDirectional.fromSTEB(15, 80, 0, 0),
                             child: IconButton(
                               icon: Image.asset('assets/images/perfik_on.png'),
+                              iconSize: 50,
                               onPressed: () {
                                 Get.to(() => PerfilWidget());
                               },

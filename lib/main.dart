@@ -1,3 +1,5 @@
+import 'package:Matrix_Game2/domain/controller/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:Matrix_Game2/domain/controller/chat_controller.dart';
 import 'package:Matrix_Game2/domain/controller/firestore.dart';
@@ -15,10 +17,15 @@ import 'package:Matrix_Game2/domain/methods/verificacion_metodos.dart';
 
 import 'package:Matrix_Game2/ui/pages/inicio/inicio_widget.dart';
 import 'package:Matrix_Game2/ui/pages/login/login_widget.dart';
+import 'package:workmanager/workmanager.dart';
 
 //probando rama juan
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Workmanager().initialize(
+    updatePositionInBackground,
+    isInDebugMode: true,
+  );
   await Firebase.initializeApp();
   Get.put(StateController());
   Get.put(StateController2());
@@ -30,8 +37,22 @@ void main() async {
   Get.put(ChatController());
   Get.put(ControllerFirestore());
   Get.put(Controllerlocations());
-
+  // Connectivity Controller
+  ConnectivityController connectivityController =
+      Get.put(ConnectivityController());
+  // Connectivity stream
+  Connectivity().onConnectivityChanged.listen((connectivityStatus) {
+    connectivityController.connectivity = connectivityStatus;
+  });
   runApp(MyApp());
+}
+
+void updatePositionInBackground() async {
+  Workmanager().executeTask((task, inputData) async {
+    Controllerlocations controlubicacion = Get.find();
+    controlubicacion.obtenerubicacion();
+    return Future.value(true);
+  });
 }
 
 //6000+8000

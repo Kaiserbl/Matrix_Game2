@@ -1,4 +1,3 @@
-import 'package:Matrix_Game2/ui/pages/serweb/response_screen.dart';
 import 'package:Matrix_Game2/ui/pages/ubicacion2/ubicacion2.dart';
 import 'package:Matrix_Game2/ui/pages/serweb/serweb_widget.dart';
 import 'package:get/get.dart';
@@ -6,7 +5,6 @@ import 'package:Matrix_Game2/domain/controller/image_controller.dart';
 import 'package:Matrix_Game2/domain/controller/state_controller.dart';
 import 'package:Matrix_Game2/ui/pages/busqueda/busqueda_widget.dart';
 import 'package:Matrix_Game2/ui/pages/chatprivado/chatprivado_widget.dart';
-import 'package:Matrix_Game2/ui/pages/configuracion/configuracion_widget.dart';
 import 'package:Matrix_Game2/ui/pages/perfil/perfil_widget.dart';
 import 'package:Matrix_Game2/ui/widgets/card_state.dart';
 import 'package:Matrix_Game2/data/models/state_model.dart';
@@ -167,10 +165,10 @@ class _InicioWidgetState extends State<InicioWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(20, 80, 0, 4),
                           child: IconButton(
-                            icon: Image.asset('assets/images/Home_off.png'),
+                            icon: Image.asset('assets/images/Home_on.png'),
                             iconSize: 50,
                             onPressed: () {
-                              Get.to(() => InicioWidget());
+                              Get.back();
                             },
                           ),
                         ),
@@ -202,7 +200,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(15, 80, 0, 0),
                             child: IconButton(
-                              icon: Image.asset('assets/images/perfik_on.png'),
+                              icon: Image.asset('assets/images/perfil_off.png'),
                               iconSize: 50,
                               onPressed: () {
                                 Get.to(() => PerfilWidget());

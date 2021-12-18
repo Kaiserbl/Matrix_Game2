@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:workmanager/workmanager.dart';
@@ -17,9 +18,10 @@ class Locations extends StatefulWidget {
 }
 
 class _LocationsState extends State<Locations> {
+  ControllerFirestore controlp = Get.find();
+  AuthenticationController controluser = Get.find();
   Controllerlocations controlubicacion = Get.find();
   ControllerFirestore controlguardarloc = Get.find();
-  AuthenticationController controluser = Get.find();
 
   @override
   void initState() {
@@ -49,13 +51,11 @@ class _LocationsState extends State<Locations> {
         title: ListTile(
           title: Obx(() => Text(
               'Lat: ${controlubicacion.locationlat} Lon: ${controlubicacion.locationlo}')),
-          subtitle: Text(controluser.emailf),
+          subtitle: Text(controluser.uidf),
         ),
         actions: [
           IconButton(
               onPressed: () {
-                print(controluser.emailf);
-                print(controluser.uidf);
                 controlubicacion.obtenerubicacion();
                 var ubicacion = <String, dynamic>{
                   'lat': controlubicacion.locationlat,
@@ -68,18 +68,15 @@ class _LocationsState extends State<Locations> {
                 displayNotification(
                     title: 'Cerca de Mi',
                     body: '${controlubicacion.cercanos}  Amigos a mi Ubicaion');
+                print(controlubicacion.cercanos);
               },
               icon: Icon(Icons.refresh)),
         ],
       ),
       body: Obx(
         () => (controlubicacion.locationlat != '')
-            ? getInfo(
-                context,
-                controlguardarloc.readLocations(),
-                controluser.uidf,
-                controlubicacion.locationlat,
-                controlubicacion.locationlo)
+            ? getInfo(context, controlp.readLocations(), controluser.uidf,
+                controlubicacion.locationlat, controlubicacion.locationlo)
             : Center(
                 child: Icon(Icons.accessibility_new),
               ),
@@ -88,6 +85,7 @@ class _LocationsState extends State<Locations> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           controlubicacion.obtenerubicacion();
+          print("boton floating");
         },
         tooltip: 'Refrescar',
         child: FaIcon(
@@ -100,14 +98,12 @@ class _LocationsState extends State<Locations> {
 
   displayNotification({required String title, required String body}) async {
     final _plugin = FlutterLocalNotificationsPlugin();
-    print("doing test");
+    print("doing test NOTIFICACION");
     var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
         'your channel id', 'your channel name',
         importance: Importance.max, priority: Priority.high);
-    var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
-    var platformChannelSpecifics = new NotificationDetails(
-        android: androidPlatformChannelSpecifics,
-        iOS: iOSPlatformChannelSpecifics);
+    var platformChannelSpecifics =
+        new NotificationDetails(android: androidPlatformChannelSpecifics);
     await _plugin.show(
       0,
       title,
@@ -235,6 +231,7 @@ class VistaLocations extends StatelessWidget {
                 final url =
                     "https://www.google.es/maps?q=${listacalculo[posicion]['lat']},${listacalculo[posicion]['lo']}";
                 await launch(url);
+                print("boton con link de google");
               },
               icon: Icon(Icons.map_sharp),
             ),
