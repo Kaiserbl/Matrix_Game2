@@ -1,6 +1,5 @@
+import 'package:Matrix_Game2/ui/pages/inicio/inicio_widget.dart';
 import 'package:Matrix_Game2/ui/pages/serweb/response_screen.dart';
-import 'package:Matrix_Game2/ui/pages/ubicacion2/ubicacion2.dart';
-import 'package:Matrix_Game2/ui/pages/serweb/serweb_widget.dart';
 import 'package:get/get.dart';
 import 'package:Matrix_Game2/domain/controller/image_controller.dart';
 import 'package:Matrix_Game2/domain/controller/state_controller.dart';
@@ -12,32 +11,34 @@ import 'package:Matrix_Game2/ui/widgets/card_state.dart';
 import 'package:Matrix_Game2/data/models/state_model.dart';
 import 'package:flutter/material.dart';
 
-class InicioWidget extends StatefulWidget {
-  const InicioWidget({Key? key}) : super(key: key);
+class SerwebWidget extends StatefulWidget {
+  const SerwebWidget({Key? key}) : super(key: key);
 
   @override
-  _InicioWidgetState createState() => _InicioWidgetState();
+  _SerwebWidgetState createState() => _SerwebWidgetState();
 }
 
-class _InicioWidgetState extends State<InicioWidget> {
+class _SerwebWidgetState extends State<SerwebWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    String tituloEjemplo = 'HOLA';
-    Widget pathImagenEjemplo = IconButton(
-      icon: Image.asset('assets/images/P_chat_inactiovo.png'),
-      iconSize: 40,
-      onPressed: () {
-        Get.to(() => Locations());
-      },
-    );
-    String estadoEjemplo = 'estadoEjemplo';
-    StateController statecontroller = Get.find();
-    statecontroller.addState(StateModel(
-        titulo: tituloEjemplo,
-        pathImagen: pathImagenEjemplo,
-        estado: estadoEjemplo));
+    /*child:
+    ResponseScreen();*/
+    // String tituloEjemplo = 'HOLA';
+    // Widget pathImagenEjemplo = IconButton(
+    //   icon: Image.asset('assets/images/P_chat_inactiovo.png'),
+    //   iconSize: 40,
+    //   onPressed: () {
+    //     Get.to(() => PerfilWidget());
+    //   },
+    // );
+    // String estadoEjemplo = 'estadoEjemplo';
+    // StateController statecontroller = Get.find();
+    // statecontroller.addState(StateModel(
+    //     titulo: tituloEjemplo,
+    //     pathImagen: pathImagenEjemplo,
+    //     estado: estadoEjemplo));
     Image_Control image = Get.find();
 
     return Scaffold(
@@ -95,41 +96,7 @@ class _InicioWidgetState extends State<InicioWidget> {
             ),
             //CONTENEDOR DE LAS CARTAS
             Align(
-              alignment: AlignmentDirectional(0, 0),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 60),
-                child: Container(
-                  width: 340,
-                  height: 560,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFEEEEEE),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                    child: Stack(
-                      children: [
-                        Container(child:
-                            GetX<StateController>(builder: (statecontroller) {
-                          return ListView.builder(
-                            itemCount: statecontroller.listStates.length,
-                            itemBuilder: (context, index) {
-                              return CardState(
-                                  titulo:
-                                      statecontroller.listState[index].titulo,
-                                  pathImagen: statecontroller
-                                      .listState[index].pathImagen,
-                                  estado:
-                                      statecontroller.listState[index].estado);
-                            },
-                          );
-                        }))
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
+                alignment: AlignmentDirectional(0, 0), child: ResponseScreen()),
             //BOTON NAVEGACION ABAJO
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 720, 0, 3),
@@ -183,12 +150,12 @@ class _InicioWidgetState extends State<InicioWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(30, 80, 0, 0),
-                          child: IconButton(
-                            icon: Image.asset('assets/images/game_off.png'),
-                            onPressed: () {
-                              Get.to(() => SerwebWidget());
-                            },
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(105, 80, 0, 0),
+                          child: Image.asset(
+                            'assets/images/game_off.png',
+                            width: 45,
+                            fit: BoxFit.cover,
                           ),
                         ),
                         Align(

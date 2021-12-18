@@ -43,7 +43,7 @@ class AuthenticationController extends GetxController {
     printInfo(info: 'Ok');
   }
 
-  void logout() async {
+  Future<void> logout() async {
     await authManagement.signOut();
     isLogged.value = false; // el estado cambia al momento de salir (signUp)
   }

@@ -53,7 +53,16 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: GetX<AuthenticationController>(
+        home: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return InicioWidget();
+            } else {
+              return LoginWidget();
+            }
+          },
+          /*GetX<AuthenticationController>(
           builder: (controller) {
             if (controller.isLogged.value) {
               return InicioWidget();
@@ -61,6 +70,7 @@ class MyApp extends StatelessWidget {
               return const LoginWidget();
             }
           },
+        )*/
         ));
   }
 }
