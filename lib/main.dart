@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:Matrix_Game2/domain/controller/chat_controller.dart';
 import 'package:Matrix_Game2/domain/controller/firestore.dart';
 import 'package:Matrix_Game2/domain/use_case/controllers/location2.dart';
