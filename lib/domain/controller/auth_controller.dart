@@ -8,9 +8,9 @@ class AuthenticationController extends GetxController {
 //variables observarbles
   var isLogged = false.obs; //variable observable (obs)
   final _userActive = Rx<UserModel?>(null);
-  var _email = "".obs;
-  var _uid = "".obs;
-
+  late Rx<dynamic> _uid = "".obs;
+  late Rx<dynamic> _email = "".obs;
+  late Rx<dynamic> _photo = "".obs;
   AuthManagement authManagement = Get.find();
 //Este es el contructor de la clase y  llama al getLoggedUser
   AuthenticationController() {
@@ -60,6 +60,7 @@ class AuthenticationController extends GetxController {
 
   String get emailf => _email.value;
   String get uidf => _uid.value;
+  String get photo => _photo.value;
 
   Future<void> signup({email, password, userName, nickName}) async {
     //Este signup es del contrlador
@@ -72,6 +73,7 @@ class AuthenticationController extends GetxController {
           nick: nickName);
       _email.value = email;
       _uid.value = email;
+      _photo.value = 'https://image.flaticon.com/icons/png/512/17/17004.png';
     } catch (e) {
       return Future.error(e);
     }

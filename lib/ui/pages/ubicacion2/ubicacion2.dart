@@ -62,7 +62,7 @@ class _LocationsState extends State<Locations> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple[300],
+        backgroundColor: Colors.deepPurpleAccent[700],
         title: ListTile(
           title: Obx(() => Text(
                 'Lat: ${controlubicacion.locationlat} Lon: ${controlubicacion.locationlo}',
