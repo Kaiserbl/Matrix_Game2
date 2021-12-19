@@ -1,3 +1,5 @@
+import 'package:Matrix_Game2/ui/pages/estados/states_screen.dart';
+import 'package:Matrix_Game2/ui/pages/estados/widgets/estados_widget.dart';
 import 'package:Matrix_Game2/ui/pages/ubicacion2/ubicacion2.dart';
 import 'package:Matrix_Game2/ui/pages/serweb/serweb_widget.dart';
 import 'package:get/get.dart';
@@ -27,7 +29,7 @@ class _InicioWidgetState extends State<InicioWidget> {
       icon: Image.asset('assets/images/P_chat_inactiovo.png'),
       iconSize: 40,
       onPressed: () {
-        Get.to(() => Locations());
+        Get.to(() => ListaEstados());
       },
     );
     String estadoEjemplo = 'estadoEjemplo';
@@ -152,10 +154,12 @@ class _InicioWidgetState extends State<InicioWidget> {
                     Align(
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
-                        child: Image.asset(
-                          'assets/images/BTN_ms.png',
-                          width: 50,
-                          fit: BoxFit.contain,
+                        child: IconButton(
+                          icon: Image.asset('assets/images/BTN_ms.png'),
+                          iconSize: 50,
+                          onPressed: () {
+                            Get.to(() => AgregarEstado());
+                          },
                         ),
                       ),
                     ),

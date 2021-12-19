@@ -1,4 +1,5 @@
 import 'package:Matrix_Game2/domain/controller/connectivity.dart';
+import 'package:Matrix_Game2/ui/pages/estados/states_screen.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:Matrix_Game2/domain/controller/chat_controller.dart';
@@ -55,9 +56,7 @@ void updatePositionInBackground() async {
   });
 }
 
-//6000+8000
 class MyApp extends StatelessWidget {
-  /*final Future<FirebaseApp> _initialization = Firebase.initializeApp();*/
   // This widget is the root of your application.
 
   @override
@@ -72,20 +71,11 @@ class MyApp extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return InicioWidget();
+              return ListaEstados();
             } else {
               return LoginWidget();
             }
           },
-          /*GetX<AuthenticationController>(
-          builder: (controller) {
-            if (controller.isLogged.value) {
-              return InicioWidget();
-            } else {
-              return const LoginWidget();
-            }
-          },
-        )*/
         ));
   }
 }

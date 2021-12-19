@@ -1,14 +1,10 @@
-import 'package:Matrix_Game2/ui/pages/inicio/inicio_widget.dart';
 import 'package:Matrix_Game2/ui/pages/serweb/response_screen.dart';
 import 'package:get/get.dart';
 import 'package:Matrix_Game2/domain/controller/image_controller.dart';
-import 'package:Matrix_Game2/domain/controller/state_controller.dart';
 import 'package:Matrix_Game2/ui/pages/busqueda/busqueda_widget.dart';
 import 'package:Matrix_Game2/ui/pages/chatprivado/chatprivado_widget.dart';
 import 'package:Matrix_Game2/ui/pages/configuracion/configuracion_widget.dart';
-import 'package:Matrix_Game2/ui/pages/perfil/perfil_widget.dart';
-import 'package:Matrix_Game2/ui/widgets/card_state.dart';
-import 'package:Matrix_Game2/data/models/state_model.dart';
+
 import 'package:flutter/material.dart';
 
 class SerwebWidget extends StatefulWidget {
@@ -23,22 +19,6 @@ class _SerwebWidgetState extends State<SerwebWidget> {
 
   @override
   Widget build(BuildContext context) {
-    /*child:
-    ResponseScreen();*/
-    // String tituloEjemplo = 'HOLA';
-    // Widget pathImagenEjemplo = IconButton(
-    //   icon: Image.asset('assets/images/P_chat_inactiovo.png'),
-    //   iconSize: 40,
-    //   onPressed: () {
-    //     Get.to(() => PerfilWidget());
-    //   },
-    // );
-    // String estadoEjemplo = 'estadoEjemplo';
-    // StateController statecontroller = Get.find();
-    // statecontroller.addState(StateModel(
-    //     titulo: tituloEjemplo,
-    //     pathImagen: pathImagenEjemplo,
-    //     estado: estadoEjemplo));
     Image_Control image = Get.find();
 
     return Scaffold(
@@ -78,27 +58,14 @@ class _SerwebWidgetState extends State<SerwebWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(-0.8, -1.015),
+              alignment: AlignmentDirectional(-0.8, -1),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 55, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(125, 45, 0, 0),
                 child: Image.asset(
                   'assets/images/Logo_2.png',
-                  width: 120,
+                  width: 150,
+                  height: 60,
                   fit: BoxFit.contain,
-                ),
-              ),
-            ),
-            //BOTON BUSQUEDA NUEVO
-            Align(
-              alignment: AlignmentDirectional(0.75, -1.015),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
-                child: IconButton(
-                  icon: Image.asset('assets/images/BTN_BUSCAR.png'),
-                  iconSize: 50,
-                  onPressed: () {
-                    Get.to(() => BusquedaWidget());
-                  },
                 ),
               ),
             ),
@@ -181,10 +148,10 @@ class _SerwebWidgetState extends State<SerwebWidget> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(15, 80, 0, 0),
                             child: IconButton(
-                              icon: Image.asset('assets/images/perfil_off.png'),
+                              icon: Image.asset('assets/images/setting.png'),
                               iconSize: 50,
                               onPressed: () {
-                                Get.to(() => PerfilWidget());
+                                Get.to(() => ConfiguracionWidget());
                               },
                             ),
                           ),

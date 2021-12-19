@@ -118,7 +118,7 @@ class _ConfiguracionWidgetState extends State<ConfiguracionWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                               child: Text(
-                                'Cerrar Sesion',
+                                'Cerrar Sesión',
                                 style: FlutterFlowTheme.subtitle2.override(
                                   fontFamily: 'NEXA',
                                   color: Color(0xFFFABAFA),
@@ -170,7 +170,7 @@ class _ConfiguracionWidgetState extends State<ConfiguracionWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                               child: Text(
-                                'Activar Mi Ubicación',
+                                'Accede A Tu Ubicación',
                                 style: FlutterFlowTheme.subtitle2.override(
                                   fontFamily: 'NEXA',
                                   color: Color(0xFFFABAFA),
