@@ -112,31 +112,27 @@ class _ChatprivadoWidgetState extends State<ChatprivadoWidget> {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(120, 15, 0, 0),
-              child: Image.asset(
-                'assets/images/P_online.png',
-                width: 50,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(200, 45, 0, 0),
-              child: Text(
-                'Online',
-                style: FlutterFlowTheme.title1.override(
-                  fontFamily: 'NEXA',
-                  fontSize: 15,
-                  fontWeight: FontWeight.w300,
-                  useGoogleFonts: false,
+            Align(
+              alignment: AlignmentDirectional(-0.8, -1),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(120, 15, 0, 0),
+                child: Image.asset(
+                  'assets/images/flecha.png',
+                  width: 30,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(200, 15, 0, 0),
-              child: Text(
-                'Adam Suley',
-                style: FlutterFlowTheme.title3,
+            Align(
+              alignment: AlignmentDirectional(-0.8, -1),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(170, 15, 0, 0),
+                child: Image.asset(
+                  'assets/images/Logo_2.png',
+                  width: 150,
+                  height: 60,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
             Align(

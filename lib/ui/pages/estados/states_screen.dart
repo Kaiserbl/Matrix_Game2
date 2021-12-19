@@ -111,13 +111,11 @@ class VistaEstados extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                        estados[posicion]['photo']),
-                                    backgroundColor: Colors.white,
-                                  ),
-                                  const SizedBox(
-                                    width: 14.0,
+                                  IconButton(
+                                    icon: Image.asset(
+                                        'assets/images/P_chat_inactiovo.png'),
+                                    iconSize: 20,
+                                    onPressed: () {},
                                   ),
                                   Expanded(
                                     child: Text(
@@ -264,7 +262,8 @@ class VistaEstados extends StatelessWidget {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(15, 80, 0, 0),
                             child: IconButton(
-                              icon: Image.asset('assets/images/setting.png'),
+                              icon: Image.asset(
+                                  'assets/images/engranaje_gris.png'),
                               iconSize: 50,
                               onPressed: () {
                                 Get.to(() => ConfiguracionWidget());

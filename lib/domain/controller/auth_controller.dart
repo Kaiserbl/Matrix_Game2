@@ -30,11 +30,8 @@ class AuthenticationController extends GetxController {
     try {
       _userActive.value =
           await authManagement.signIn(email: email, password: password);
-      print("comienzo xd");
-      //print(_userActive.value!.toMap());
-      print("termino xd");
+
       if (_userActive.value != null) {
-        print("entre");
         isLogged.value = true;
       }
     } catch (e) {

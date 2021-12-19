@@ -62,8 +62,17 @@ class _ModificarEstadoState extends State<ModificarEstado> {
                 ),
               ),
             ),
+            Align(
+              alignment: AlignmentDirectional(0.07, -0.61),
+              child: Image.asset(
+                'assets/images/Logo_1.png',
+                width: 180,
+                height: 180,
+                fit: BoxFit.cover,
+              ),
+            ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(15, 230, 0, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(15, 320, 0, 0),
               child: Container(
                 width: 380,
                 height: 300,

@@ -15,8 +15,6 @@ import 'package:Matrix_Game2/domain/controller/state_controller2.dart';
 import 'package:Matrix_Game2/domain/methods/authentication_metodos.dart';
 import 'package:Matrix_Game2/domain/methods/firestore_metodos.dart';
 import 'package:Matrix_Game2/domain/methods/verificacion_metodos.dart';
-
-import 'package:Matrix_Game2/ui/pages/inicio/inicio_widget.dart';
 import 'package:Matrix_Game2/ui/pages/login/login_widget.dart';
 import 'package:workmanager/workmanager.dart';
 

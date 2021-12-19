@@ -1,6 +1,6 @@
+import 'package:Matrix_Game2/ui/pages/estados/states_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:Matrix_Game2/ui/pages/inicio/inicio_widget.dart';
 import 'package:Matrix_Game2/ui/pages/login/login_widget.dart';
 
 class FirebaseCentral extends StatelessWidget {
@@ -10,7 +10,7 @@ class FirebaseCentral extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return InicioWidget();
+          return ListaEstados();
         } else {
           return LoginWidget();
         }
