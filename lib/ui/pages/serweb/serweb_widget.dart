@@ -1,7 +1,7 @@
+import 'package:Matrix_Game2/ui/pages/estados/widgets/estados_widget.dart';
 import 'package:Matrix_Game2/ui/pages/serweb/response_screen.dart';
 import 'package:get/get.dart';
 import 'package:Matrix_Game2/domain/controller/image_controller.dart';
-import 'package:Matrix_Game2/ui/pages/busqueda/busqueda_widget.dart';
 import 'package:Matrix_Game2/ui/pages/chatprivado/chatprivado_widget.dart';
 import 'package:Matrix_Game2/ui/pages/configuracion/configuracion_widget.dart';
 
@@ -100,10 +100,12 @@ class _SerwebWidgetState extends State<SerwebWidget> {
                     Align(
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
-                        child: Image.asset(
-                          'assets/images/BTN_ms.png',
-                          width: 50,
-                          fit: BoxFit.contain,
+                        child: IconButton(
+                          icon: Image.asset('assets/images/BTN_ms.png'),
+                          iconSize: 50,
+                          onPressed: () {
+                            Get.to(() => AgregarEstado());
+                          },
                         ),
                       ),
                     ),
@@ -148,7 +150,8 @@ class _SerwebWidgetState extends State<SerwebWidget> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(15, 80, 0, 0),
                             child: IconButton(
-                              icon: Image.asset('assets/images/setting.png'),
+                              icon:
+                                  Image.asset('assets/images/setting_gris.png'),
                               iconSize: 50,
                               onPressed: () {
                                 Get.to(() => ConfiguracionWidget());

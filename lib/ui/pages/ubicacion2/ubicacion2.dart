@@ -1,12 +1,11 @@
 import 'dart:math';
-
 import 'package:Matrix_Game2/domain/controller/auth_controller.dart';
 import 'package:Matrix_Game2/domain/controller/firestore.dart';
 import 'package:Matrix_Game2/domain/controller/image_controller.dart';
 import 'package:Matrix_Game2/domain/use_case/controllers/location2.dart';
 import 'package:Matrix_Game2/ui/pages/chatprivado/chatprivado_widget.dart';
+import 'package:Matrix_Game2/ui/pages/configuracion/configuracion_widget.dart';
 import 'package:Matrix_Game2/ui/pages/flutter_flow/flutter_flow_theme.dart';
-import 'package:Matrix_Game2/ui/pages/perfil/perfil_widget.dart';
 import 'package:Matrix_Game2/ui/pages/serweb/serweb_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -231,10 +230,11 @@ class _LocationsState extends State<Locations> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(15, 80, 0, 0),
                             child: IconButton(
-                              icon: Image.asset('assets/images/perfil_off.png'),
+                              icon:
+                                  Image.asset('assets/images/setting_gris.png'),
                               iconSize: 50,
                               onPressed: () {
-                                Get.to(() => PerfilWidget());
+                                Get.to(() => ConfiguracionWidget());
                               },
                             ),
                           ),

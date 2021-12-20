@@ -262,8 +262,8 @@ class VistaEstados extends StatelessWidget {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(15, 80, 0, 0),
                             child: IconButton(
-                              icon: Image.asset(
-                                  'assets/images/engranaje_gris.png'),
+                              icon:
+                                  Image.asset('assets/images/setting_gris.png'),
                               iconSize: 50,
                               onPressed: () {
                                 Get.to(() => ConfiguracionWidget());

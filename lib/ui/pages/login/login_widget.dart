@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:Matrix_Game2/domain/controller/auth_controller.dart';
 import 'package:Matrix_Game2/domain/controller/image_controller.dart';
-import 'package:Matrix_Game2/ui/pages/inicio/inicio_widget.dart';
 import 'package:Matrix_Game2/ui/pages/registro/registro_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
