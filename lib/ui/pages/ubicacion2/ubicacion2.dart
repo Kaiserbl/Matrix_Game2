@@ -36,17 +36,6 @@ class _LocationsState extends State<Locations> {
       "1",
       "ObtenerUbicacionesPeriodicas",
     );
-    /*Timer.periodic(const Duration(minutes: 30), (timer) async {
-      // Verifica que tienes los permisos y luego obten la ubicacion
-      // Almacenala y tambien muestra un snackbar con los datos
-      locationController.location.value = null;
-      if (permissionsController.locationGranted) {
-        final position = await manager.getCurrentLocation();
-        locationController.location.value = position;
-        Get.snackbar('Tu ubicación',
-            'Latitud ${position.latitude}\nLongitud: ${position.longitude}\nAltitud: ${position.altitude}');
-      }
-    });*/
   }
 
   _initNotificaciones() async {
@@ -141,9 +130,7 @@ class _LocationsState extends State<Locations> {
                             controlubicacion.locationlo)
                         : Center(
                             //ICONO QUE TE ENVIA A GOOGLE MAPS
-                            child: Text('Sin Datos')
-                            //child: Icon(Icons.accessibility_new),
-                            ),
+                            child: Text('Sin Datos')),
                   ),
                 ),
               ),
@@ -275,9 +262,6 @@ Widget getInfo(BuildContext context, Stream<QuerySnapshot> ct, String uid,
     String lat, String lo) {
   return StreamBuilder(
     stream: ct,
-    /*FirebaseFirestore.instance
-        .collection('clientes')
-        .snapshots(),*/ //En esta línea colocamos el el objeto Future que estará esperando una respuesta
     builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
       print(snapshot.connectionState);
       switch (snapshot.connectionState) {
@@ -288,17 +272,10 @@ Widget getInfo(BuildContext context, Stream<QuerySnapshot> ct, String uid,
 
         case ConnectionState.active:
           if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-          // print(snapshot.data);
           return snapshot.data != null
               ? VistaLocations(
                   locations: snapshot.data!.docs, uid: uid, lat: lat, lo: lo)
               : Text('Sin Datos');
-
-        /*
-             Text(
-              snapshot.data != null ?'ID: ${snapshot.data['id']}\nTitle: ${snapshot.data['title']}' : 'Vuelve a intentar', 
-              style: TextStyle(color: Colors.black, fontSize: 20),);
-            */
 
         default:
           return Text('Presiona el boton para recargar');
@@ -366,7 +343,6 @@ class VistaLocations extends StatelessWidget {
           'lo': locations[i]['lo'],
           'Dist': distancia
         };
-        // if (double.parse(distancia) < 500) listacalculo.add(calc);
         listacalculo.add(calc);
       }
     }
@@ -380,7 +356,6 @@ class VistaLocations extends StatelessWidget {
     return ListView.builder(
         itemCount: listacalculo.length == 0 ? 0 : listacalculo.length,
         itemBuilder: (context, posicion) {
-          //print(listacalculo[posicion].id);
           return ListTile(
             leading: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
@@ -398,12 +373,6 @@ class VistaLocations extends StatelessWidget {
             title: Text(
                 'Lat:${listacalculo[posicion]['lat']} Lo: ${listacalculo[posicion]['lo']}'),
             subtitle: Text(listacalculo[posicion]['name']),
-            /*trailing: Container(
-              width: 45,
-              height: 20,
-              color: Colors.red,
-              child: Text(listacalculo[posicion]['Dist']),
-            ),*/
           );
         });
   }

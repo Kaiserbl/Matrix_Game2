@@ -34,28 +34,24 @@ class ControllerFirestore extends GetxController {
     await _db.collection('estados').doc().set(estados).catchError((e) {
       print(e);
     });
-    //return true;
   }
 
   Future<void> guardarubicacion(Map<String, dynamic> ubicacion, uid) async {
     await _db.collection('ubicacion').doc(uid).set(ubicacion).catchError((e) {
       print(e);
     });
-    //return true;
   }
 
   Future<void> actualizarestado(String id, Map<String, dynamic> estados) async {
     await _db.collection('estados').doc(id).update(estados).catchError((e) {
       print(e);
     });
-    //return true;
   }
 
   Future<void> eliminarestados(String id) async {
     await _db.collection('estados').doc(id).delete().catchError((e) {
       print(e);
     });
-    //return true;
   }
 
   Future<dynamic> cargarfoto(var foto, var idfoto) async {

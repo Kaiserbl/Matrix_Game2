@@ -5,18 +5,14 @@ import 'package:http/http.dart' as http;
 
 class GamePoolService implements MisionTicService {
   final String baseUrl = 'www.freetogame.com';
-  //final String apiKey = 'wNLombyTzPIjLjkfp/aohu5b0Xy.iOM.4Sj4Q3.s9Ri9riyE6y5E2';
 
   @override
   Future<List<GameModel>> fecthData({int limit = 10, Map? map}) async {
-    //var queryParameters = {'limit': limit.toString()};
     var uri = Uri.https(baseUrl, '/api/games');
     final response = await http.get(
       uri,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
-        // We add our service ApiKey to the request headers
-        //'key': apiKey
       },
     );
     if (response.statusCode == 200) {

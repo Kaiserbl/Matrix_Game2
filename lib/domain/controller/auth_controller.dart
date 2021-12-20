@@ -60,7 +60,7 @@ class AuthenticationController extends GetxController {
   String get photo => _photo.value;
 
   Future<void> signup({email, password, userName, nickName}) async {
-    //Este signup es del contrlador
+    //Este signup es del controlador
     try {
       await authManagement.signUp(
           // Este signUp se comunica con el authManagement

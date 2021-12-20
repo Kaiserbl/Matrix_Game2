@@ -68,7 +68,6 @@ class _ChatprivadoWidgetState extends State<ChatprivadoWidget> {
   }
 
   Future<void> _sendMsg(String text) async {
-    //FocusScope.of(context).requestFocus(FocusNode());
     logInfo("Calling _sendMsg with $text");
     await chatController.sendMsg(text);
   }
