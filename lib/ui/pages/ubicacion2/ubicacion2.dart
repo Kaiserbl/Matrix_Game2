@@ -5,6 +5,7 @@ import 'package:Matrix_Game2/domain/controller/image_controller.dart';
 import 'package:Matrix_Game2/domain/use_case/controllers/location2.dart';
 import 'package:Matrix_Game2/ui/pages/chatprivado/chatprivado_widget.dart';
 import 'package:Matrix_Game2/ui/pages/configuracion/configuracion_widget.dart';
+import 'package:Matrix_Game2/ui/pages/estados/states_screen.dart';
 import 'package:Matrix_Game2/ui/pages/flutter_flow/flutter_flow_theme.dart';
 import 'package:Matrix_Game2/ui/pages/serweb/serweb_widget.dart';
 import 'package:flutter/material.dart';
@@ -198,7 +199,7 @@ class _LocationsState extends State<Locations> {
                             icon: Image.asset('assets/images/Home_off.png'),
                             iconSize: 50,
                             onPressed: () {
-                              Get.back();
+                              Get.to(() => ListaEstados());
                             },
                           ),
                         ),

@@ -1,3 +1,4 @@
+import 'package:Matrix_Game2/ui/pages/estados/states_screen.dart';
 import 'package:Matrix_Game2/ui/pages/estados/widgets/estados_widget.dart';
 import 'package:Matrix_Game2/ui/pages/serweb/response_screen.dart';
 import 'package:get/get.dart';
@@ -118,7 +119,7 @@ class _SerwebWidgetState extends State<SerwebWidget> {
                             icon: Image.asset('assets/images/Home_off.png'),
                             iconSize: 50,
                             onPressed: () {
-                              Get.back();
+                              Get.to(() => ListaEstados());
                             },
                           ),
                         ),

@@ -4,8 +4,6 @@ import 'package:Matrix_Game2/domain/controller/chat_controller.dart';
 import 'package:get/get.dart';
 import 'package:Matrix_Game2/domain/controller/image_controller.dart';
 import 'package:loggy/loggy.dart';
-
-import '../flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 
 class ChatprivadoWidget extends StatefulWidget {
@@ -115,10 +113,11 @@ class _ChatprivadoWidgetState extends State<ChatprivadoWidget> {
             Align(
               alignment: AlignmentDirectional(-0.8, -1),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(120, 15, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(170, 15, 0, 0),
                 child: Image.asset(
-                  'assets/images/flecha.png',
-                  width: 30,
+                  'assets/images/Logo_2.png',
+                  width: 150,
+                  height: 60,
                   fit: BoxFit.contain,
                 ),
               ),
@@ -126,12 +125,13 @@ class _ChatprivadoWidgetState extends State<ChatprivadoWidget> {
             Align(
               alignment: AlignmentDirectional(-0.8, -1),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(170, 15, 0, 0),
-                child: Image.asset(
-                  'assets/images/Logo_2.png',
-                  width: 150,
-                  height: 60,
-                  fit: BoxFit.contain,
+                padding: EdgeInsetsDirectional.fromSTEB(40, 7, 0, 0),
+                child: IconButton(
+                  icon: Image.asset('assets/images/flecha_nueva.png'),
+                  iconSize: 50,
+                  onPressed: () {
+                    Get.back();
+                  },
                 ),
               ),
             ),
