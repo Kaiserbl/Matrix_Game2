@@ -54,21 +54,19 @@ class _LoginWidgetState extends State<LoginWidget> {
   void errorFormato() {
     showDialog(
         context: context,
-        barrierDismissible:
-            false, // disables popup to close if tapped outside popup (need a button to close)
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
               "ERROR",
             ),
             content: Text("Formato de correo incorrecto"),
-            //buttons?
             actions: <Widget>[
               TextButton(
                 child: Text("Close"),
                 onPressed: () {
                   Navigator.of(context).pop();
-                }, //closes popup
+                },
               ),
             ],
           );
@@ -78,21 +76,19 @@ class _LoginWidgetState extends State<LoginWidget> {
   void errorFormato2() {
     showDialog(
         context: context,
-        barrierDismissible:
-            false, // disables popup to close if tapped outside popup (need a button to close)
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
               "ERROR",
             ),
             content: Text("Mínimo la contraseña debe tener 6 caracteres"),
-            //buttons?
             actions: <Widget>[
               TextButton(
                 child: Text("Close"),
                 onPressed: () {
                   Navigator.of(context).pop();
-                }, //closes popup
+                },
               ),
             ],
           );
@@ -102,21 +98,19 @@ class _LoginWidgetState extends State<LoginWidget> {
   void errorFormato3() {
     showDialog(
         context: context,
-        barrierDismissible:
-            false, // disables popup to close if tapped outside popup (need a button to close)
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
               "ERROR",
             ),
             content: Text("Los campos usuario y contraseña son requeridos"),
-            //buttons?
             actions: <Widget>[
               TextButton(
                 child: Text("Close"),
                 onPressed: () {
                   Navigator.of(context).pop();
-                }, //closes popup
+                },
               ),
             ],
           );
@@ -126,21 +120,19 @@ class _LoginWidgetState extends State<LoginWidget> {
   void errorFormato4() {
     showDialog(
         context: context,
-        barrierDismissible:
-            false, // disables popup to close if tapped outside popup (need a button to close)
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
               "ERROR",
             ),
             content: Text("El campo de usuario es requerido"),
-            //buttons?
             actions: <Widget>[
               TextButton(
                 child: Text("Close"),
                 onPressed: () {
                   Navigator.of(context).pop();
-                }, //closes popup
+                },
               ),
             ],
           );
@@ -150,21 +142,19 @@ class _LoginWidgetState extends State<LoginWidget> {
   void errorFormato5() {
     showDialog(
         context: context,
-        barrierDismissible:
-            false, // disables popup to close if tapped outside popup (need a button to close)
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
               "ERROR",
             ),
             content: Text("El campo de la contraseña es requerido"),
-            //buttons?
             actions: <Widget>[
               TextButton(
                 child: Text("Close"),
                 onPressed: () {
                   Navigator.of(context).pop();
-                }, //closes popup
+                },
               ),
             ],
           );
@@ -438,8 +428,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         primary: Color(0xFFFABAFA),
                                       ),
                                       onPressed: () async {
-                                        // final form = _formKey.currentState;
-                                        // form!.save();
                                         try {
                                           print("me rompo");
                                           await authenticationController.login(
@@ -447,10 +435,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             textController2.text,
                                           );
                                           print("no me rompi");
-                                          //Get.back();
                                         } catch (e) {
                                           //la variable (e) contiene la informacion del error
-                                          //Cuando haya al gún error, aquí se recibe la información
+                                          //Cuando haya algún error, aquí se recibe la información
                                           print(e);
                                           if (e == 'user-not-found') {
                                             Get.snackbar(

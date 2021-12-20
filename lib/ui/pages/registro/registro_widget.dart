@@ -26,7 +26,7 @@ class _RegistroWidgetState extends State<RegistroWidget> {
   @override
   void initState() {
     super.initState();
-    textcontrollerEmail = TextEditingController(); //Email
+    textcontrollerEmail = TextEditingController();
     textcontrollerPass = TextEditingController();
     textcontrollerUser = TextEditingController();
     textcontrollerName = TextEditingController();
@@ -45,21 +45,19 @@ class _RegistroWidgetState extends State<RegistroWidget> {
   void errorFormatos() {
     showDialog(
         context: context,
-        barrierDismissible:
-            false, // disables popup to close if tapped outside popup (need a button to close)
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
               "ERROR",
             ),
             content: Text("El correo no tiene el formato requerido"),
-            //buttons?
             actions: <Widget>[
               TextButton(
                 child: Text("Close"),
                 onPressed: () {
                   Navigator.of(context).pop();
-                }, //closes popup
+                },
               ),
             ],
           );
@@ -69,21 +67,19 @@ class _RegistroWidgetState extends State<RegistroWidget> {
   void errorFormatos3() {
     showDialog(
         context: context,
-        barrierDismissible:
-            false, // disables popup to close if tapped outside popup (need a button to close)
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
               "ERROR",
             ),
             content: Text("Todos los campos son requeridos"),
-            //buttons?
             actions: <Widget>[
               TextButton(
                 child: Text("Close"),
                 onPressed: () {
                   Navigator.of(context).pop();
-                }, //closes popup
+                },
               ),
             ],
           );
@@ -93,21 +89,19 @@ class _RegistroWidgetState extends State<RegistroWidget> {
   void errorFormatos2() {
     showDialog(
         context: context,
-        barrierDismissible:
-            false, // disables popup to close if tapped outside popup (need a button to close)
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
               "ERROR",
             ),
             content: Text("La contraseña y su confirmacion no son la misma"),
-            //buttons?
             actions: <Widget>[
               TextButton(
                 child: Text("Close"),
                 onPressed: () {
                   Navigator.of(context).pop();
-                }, //closes popup
+                },
               ),
             ],
           );
@@ -117,45 +111,41 @@ class _RegistroWidgetState extends State<RegistroWidget> {
   void errorFormatos4() {
     showDialog(
         context: context,
-        barrierDismissible:
-            false, // disables popup to close if tapped outside popup (need a button to close)
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
               "ERROR",
             ),
             content: Text("El nombre y usuario son requeridos"),
-            //buttons?
             actions: <Widget>[
               TextButton(
                 child: Text("Close"),
                 onPressed: () {
                   Navigator.of(context).pop();
-                }, //closes popup
+                },
               ),
             ],
           );
-        }); //Prueba Push (Fudge)
+        });
   }
 
   void errorCheckBox() {
     showDialog(
         context: context,
-        barrierDismissible:
-            false, // disables popup to close if tapped outside popup (need a button to close)
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
               "ERROR",
             ),
             content: Text("Por favor acepte los terminos y condiciones"),
-            //buttons?
             actions: <Widget>[
               TextButton(
                 child: Text("Close"),
                 onPressed: () {
                   Navigator.of(context).pop();
-                }, //closes popup
+                },
               ),
             ],
           );
@@ -172,7 +162,6 @@ class _RegistroWidgetState extends State<RegistroWidget> {
       child: Scaffold(
         key: scaffoldKey,
         body: SafeArea(
-          ///child: Expanded(
           child: Stack(
             children: [
               Obx(
@@ -522,7 +511,7 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                                       color: Color(0xFFC9C6C6),
                                       borderRadius: BorderRadius.circular(36),
                                     ),
-                                    //contro Corre
+                                    //control Correo
                                     child: TextFormField(
                                       controller: textcontrollerUser,
                                       obscureText: false,

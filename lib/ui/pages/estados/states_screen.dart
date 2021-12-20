@@ -50,7 +50,6 @@ Widget getInfo(BuildContext context, Stream<QuerySnapshot> ct, String uid) {
 
         case ConnectionState.active:
           if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-          // print(snapshot.data);
           return snapshot.data != null
               ? VistaEstados(estados: snapshot.data!.docs, uid: uid)
               : Text('Sin Datos');

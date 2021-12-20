@@ -1,13 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirestoreDatabase {
-  // We get the Firestore instance
   final _firestore = FirebaseFirestore.instance;
 
   FirebaseFirestore get databaseInstance => _firestore;
-
-  // With the documents collection ref we add a new document,
-  // the reference will be set automatically
 
   Future<void> add(
       {required String collectionPath,
@@ -26,43 +22,21 @@ class FirestoreDatabase {
         data); //se asigna dato al documento (idoc) que se encuentra en la colectción
   }
 
-  // With the document reference we can add/replace it with
-  // the data provided
-
-  // Future<void> addWithReference(
-  //     {required String documentPath,
-  //     required Map<String, dynamic> data}) async {
-  //   await _firestore
-  //       .doc(documentPath)
-  //       .set(data); // el guión bajo en el firestone quiere decir que es privado
-  // }
-
-  // We use the document reference to delete it
-
   Future<void> deleteDoc({required String documentPath}) async {
     await _firestore.doc(documentPath).delete();
   }
 
-  // We read the document specified by the document reference
-
-  // ejemplo de un documentPath: users/123
   Future<Map<String, dynamic>?> readDoc({required String documentPath}) async {
     DocumentSnapshot<Map<String, dynamic>> snapshot =
         await _firestore.doc(documentPath).get();
     return snapshot.data();
   }
 
-  // We get all the documents inside the collection
-  // specified by te collection reference
-
   Future<List<Map<String, dynamic>>> readCollection(
       {required String collectionPath}) async {
     QuerySnapshot<Map<String, dynamic>> snapshot =
         await _firestore.collection(collectionPath).get();
     List<Map<String, dynamic>> docs = [];
-    // Since we fetch all the documents within the collection,
-    // we also need to save the references of each of the documents,
-    // so that, if necessary, we can apply actions on them in firestore later.
     for (var document in snapshot.docs) {
       docs.add({
         "ref": document.reference,
@@ -72,9 +46,6 @@ class FirestoreDatabase {
     return docs;
   }
 
-  // We update the specified fields in the document
-  // specified by the document reference
-
   Future<void> updateDoc(
       {required String documentPath,
       required Map<String, dynamic> data}) async {
@@ -83,12 +54,6 @@ class FirestoreDatabase {
 
   Stream<QuerySnapshot<Map<String, dynamic>>> listenCollection(
       {required String collectionPath}) {
-    // Since we are going to fetch users interaction data,
-    // we can establish a fetch window, 24 hours in this case.
-
-    // IMPORTANT! This query is case specific.
-
-    // H * m * s * ms
     const lifeSpan = 24 * 60 * 60 * 1000;
     final minimumTimestamp = Timestamp.fromMillisecondsSinceEpoch(
         Timestamp.now().millisecondsSinceEpoch - lifeSpan);
@@ -104,9 +69,6 @@ class FirestoreDatabase {
   List<Map<String, dynamic>> extractDocs(
       QuerySnapshot<Map<String, dynamic>> snapshot) {
     List<Map<String, dynamic>> docs = [];
-    // Since we fetch all the documents within the collection,
-    // we also need to save the references of each of the documents,
-    // so that, if necessary, we can apply actions on them in firestore later.
     for (var document in snapshot.docs) {
       docs.add({
         "ref": document.reference.path,
