@@ -10,17 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:Matrix_Game2/domain/controller/auth_controller.dart';
 import 'package:Matrix_Game2/domain/controller/image_controller.dart';
-import 'package:Matrix_Game2/domain/controller/state_controller.dart';
-import 'package:Matrix_Game2/domain/controller/state_controller2.dart';
 import 'package:Matrix_Game2/domain/methods/authentication_metodos.dart';
 import 'package:Matrix_Game2/domain/methods/firestore_metodos.dart';
 import 'package:Matrix_Game2/domain/methods/verificacion_metodos.dart';
-
-import 'package:Matrix_Game2/ui/pages/inicio/inicio_widget.dart';
 import 'package:Matrix_Game2/ui/pages/login/login_widget.dart';
 import 'package:workmanager/workmanager.dart';
 
-//probando rama juan
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Workmanager().initialize(
@@ -28,8 +23,6 @@ void main() async {
     isInDebugMode: true,
   );
   await Firebase.initializeApp();
-  Get.put(StateController());
-  Get.put(StateController2());
   Get.put(Image_Control());
   Get.put(FirestoreDatabase());
   Get.put(AuthManagement());
